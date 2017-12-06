@@ -13,7 +13,8 @@
 
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-
+    <link rel="stylesheet" type="text/css" href="./static/css/home.css">
+    <link rel="stylesheet" type="text/css" href="./static/css/carousel.css">
 
 
 </head>
@@ -22,50 +23,9 @@
 <script src="http://cdn-files.deezer.com/js/min/dz.js"></script>
 <div id="dz-root"></div>
 
-<script>
-      DZ.init({
-      appId  : '261582',
-      channelUrl : 'http://127.0.0.1:5000',
-    });
+<script src="./static/js/main.js"></script>
 
-function getGraph(){
-
-      DZ.getLoginStatus(function(response){
-          var id = response.userID;
-          var token = response.authResponse.accessToken;
-
-
-var url = 'https://api.deezer.com/user/' + id +'/tracks&access_token='+ token;
-  function httpGet(url)
-    {
-    var xmlHttp = new XMLHttpRequest();
-    xmlHttp.open( "GET", url, false ); 
-    xmlHttp.send( null );
-    return JSON.parse(xmlHttp.response);
-    }
-
-
-var apiresponse = httpGet(url)
-console.log(apiresponse)
-console.log(id);
-//    // no user session available, someone you dont know
-//  }
-// });
-
-  // DZ.api('/user/me', function(response){
-  //   console.log(response);
-  //   // document.getElementById('showGraph').innerHTML = '<h1>Welcome back to Deezer <b>' + response.name + '</b></h1>';
-  // });
-});
-}
-        function logout(){
-    DZ.logout();
-        }
-
-
-</script>
-
-<div id="myModal" class="modal fade" role="dialog">
+<!-- <div id="myModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -90,48 +50,149 @@ console.log(id);
 
 <nav class="navbar navbar-inverse">
       <div class="container">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
+        <! Brand and toggle get grouped for better mobile display -->
+        <!-- <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-2">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/"><img src="/static/img/login_background.png" alt="Deezer's Logo" width="30%" height="50px"></a>
-        </div>
+          <a class="navbar-left" href="#"><img src="/static/img/nav_logo.jpg" alt="Deezer's Logo" height="80px" width="200px"></a>
+        </div> -->
     
         <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="navbar-collapse-2">
+        <!-- <div class="collapse navbar-collapse" id="navbar-collapse-2">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#mapGoogle">Map</a></li>
-            <li><a href="#chartJS">Charts</a></li>
-            <li><a href="#pieJS">Pie</a></li>
+            <li><a href="#BPM">BPM</a></li>
+            <li><a href="#Genres">Genres</a></li>
+            <li><a href="#3DVisuals">3dGraph</a></li>
             <li><a onclick="logout()" href="#" data-target="#myModal" data-toggle="modal">Logout</a></li>
 
           </ul>
-        </div><!-- /.navbar-collapse -->
-      </div><!-- /.container -->
-    </nav><!-- /.navbar -->
+        </div>/.navbar-collapse -->
+     <!-- </div> /.container -->
+  <!--  </nav>  /.navbar -->
+
+ 
+<!--    <div id="slideshow" class="container" >
+      <h1>Slideshow Here</h1>
+   </div>  -->
+    <div class="navbar-wrapper">
+      <div class="container">
+
+        <nav class="navbar navbar-inverse navbar-static-top">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-left" href="#"><img src="/static/img/nav_logo.jpg" alt="Deezer's Logo" height="50" width="200"></a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+              <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a onclick="logout()" href="#" data-target="#myModal" data-toggle="modal">Logout</a></li>
+               </ul> 
+            </div>
+          </div>
+        </nav>
+
+      </div>
+    </div>
+
+
+
+
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Notice</h4>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to Log out?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" onclick="javascript:window.location.href='/'" data-dismiss="modal">Log me out</button>
+        <button type="button" class="btn btn-default"  data-dismiss="modal">Dismiss</button>
+
+      </div>
+    </div>
+  </div>
+</div>
+     
+
+
+  <!-- Carousel
+    ================================================== -->
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner" role="listbox">
+        <div id="pic0" class="item active">
+          
+
+        </div>
+        <div id="pic1" class="item">
+          
+ 
+        </div>
+        <div id="pic2" class="item">
+          
+        </div>
+      </div>
+      <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div><!-- /.carousel -->
+
+<div class="BPM_container"><h1>BPM GENERATOR</h1></div>
+<div class="BPM_container"><h1>3D_Graph</h1></div>
+
+
+
+
+
+      <!-- FOOTER -->
+      <footer>
+        <p class="pull-right"><a href="#">Back to top</a></p>
+        <p>&copy; 2016 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+      </footer>
+
+    </div><!-- /.container -->
+
 
  
 
-      <a onclick="getGraph()" href="#">Console Log top tracks</a>
-   <div class="container" id="showGraph">
-    
-   </div>
+<script
+src= "https://code.jquery.com/jquery-3.2.1.min.js"
+integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
 
 
     <script src="https://d3js.org/d3.v3.min.js"></script>
     
 
-
 </div>
-<script
-src="https://code.jquery.com/jquery-3.2.1.min.js"
-integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
 
 
 </body>

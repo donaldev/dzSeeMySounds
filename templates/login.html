@@ -1,6 +1,6 @@
 {% extends "index.html"%}
 {% block body %}
-
+<link rel="stylesheet" type="text/css" href="./static/css/login.css">
 <script src="http://cdn-files.deezer.com/js/min/dz.js"></script>
 <div id="dz-root"></div>
 
@@ -40,49 +40,33 @@
 
 
 
+<script src="./static/js/login.js"></script>
 
-    <script>
+<!-- 
+    // 	DZ.init({
+    //   appId  : '261582',
+    //   channelUrl : 'http://127.0.0.1:5000',
+    // });
 
-    	DZ.init({
-      appId  : '261582',
-      channelUrl : 'http://127.0.0.1:5000',
-    });
-
-        function login(){
-          DZ.login(function(response) {
-            if (response.authResponse) {
-              console.log(response);
-              if (response.status == 'connected') {
-                DZ.api('/user/me', function(user) {
-                  window.location.href = 'http://127.0.0.1:5000/main';
-                   });
-                  }
-                }
-              }, {perms: 'email, basic_access, online_access, manage_library, manage_community, delete_library, listening_history'});
-            }
-    </script>
+        // function login(){
+        //   DZ.login(function(response) {
+        //     if (response.authResponse) {
+        //       console.log(response);
+        //       if (response.status == 'connected') {
+        //         DZ.api('/user/me', function(user) {
+        //           window.location.href = 'http://127.0.0.1:5000/main';
+        //            });
+        //           }
+        //         }
+        //       }, {perms: 'email, basic_access, online_access, manage_library, manage_community, delete_library, listening_history'});
+        //     }
+ -->
 
 
 <style>
 
 
-@media screen and (max-width:768px) {
-  .container {
-    margin-top: 0px;
-    width: 340px;
-    margin-right: 100px;
-    margin-left: -170px;
-}
-}
-body {
 
-
-  background-image: url("/static/img/soundwaves.jpg");
-  overflow: hidden;
-    padding: 200px;
-    margin: 0 auto 100px;
-    
-}
 
 </style>
 
