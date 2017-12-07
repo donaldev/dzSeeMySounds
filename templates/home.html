@@ -1,83 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Deezer </title>
-
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-    <link rel="stylesheet" type="text/css" href="./static/css/home.css">
-    <link rel="stylesheet" type="text/css" href="./static/css/carousel.css">
+{% extends "index.html"%}
+{% block body %}
 
 
-</head>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-<body>
+<link rel="stylesheet" type="text/css" href="./static/css/home.css">
+<link rel="stylesheet" type="text/css" href="./static/css/carousel.css">
 <script src="http://cdn-files.deezer.com/js/min/dz.js"></script>
 <div id="dz-root"></div>
 
 <script src="./static/js/main.js"></script>
 
-<!-- <div id="myModal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Notice</h4>
-      </div>
-      <div class="modal-body">
-        <p>Are you sure you want to Log out?</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" onclick="javascript:window.location.href='/'" data-dismiss="modal">Log me out</button>
-        <button type="button" class="btn btn-default"  data-dismiss="modal">Dismiss</button>
-
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
-
-
-<nav class="navbar navbar-inverse">
-      <div class="container">
-        <! Brand and toggle get grouped for better mobile display -->
-        <!-- <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-2">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-left" href="#"><img src="/static/img/nav_logo.jpg" alt="Deezer's Logo" height="80px" width="200px"></a>
-        </div> -->
-    
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <!-- <div class="collapse navbar-collapse" id="navbar-collapse-2">
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="#BPM">BPM</a></li>
-            <li><a href="#Genres">Genres</a></li>
-            <li><a href="#3DVisuals">3dGraph</a></li>
-            <li><a onclick="logout()" href="#" data-target="#myModal" data-toggle="modal">Logout</a></li>
-
-          </ul>
-        </div>/.navbar-collapse -->
-     <!-- </div> /.container -->
-  <!--  </nav>  /.navbar -->
-
- 
-<!--    <div id="slideshow" class="container" >
-      <h1>Slideshow Here</h1>
-   </div>  -->
     <div class="navbar-wrapper">
       <div class="container">
 
@@ -193,8 +126,4 @@ crossorigin="anonymous"></script>
 
 </div>
 
-
-
-</body>
-
-</html>
+{% endblock %}
