@@ -30,18 +30,37 @@ function getGraph(){
       console.log(apiresponse)
       console.log(id);
 
-
       ////////////////Slideshow//////////////////////
-    DZ.api('/user/me/tracks', function(response){
-    for (var i = 0; i <3; i++) {
-    console.log(response.data[i].album.cover);
-    output = response.data[i].album.cover_xl;
+    DZ.api('/chart', function(response){
+    for (var i = 0; i <6; i++) {
+    console.log(response.tracks.data[i].album.cover_medium);
+    output = response.tracks.data[i].album.cover_medium;
+    
     document.getElementById("pic"+i).innerHTML="<img src=\"" + output + "\">";
     }
 
+  });
 
+
+    /////////Get Albums id to get genres///////////////
+    DZ.api('/user/me/albums', function(response){
+    for (var i = 0; i <response.data.length; i++) {
+    idOutput = response.data[i].id;
+
+    DZ.api('album/'+ idOutput, function(response){
+    for (var i = 0; i <1; i++) {
+    if (typeof response.genres.data[i] !== 'undefined') {
+    console.log(response.genres.data[i].name);
+  }
+
+}
+  });
+
+}
 
   });
+
+
 //    // no user session available, someone you dont know
 //  }
 // });

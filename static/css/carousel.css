@@ -5,11 +5,14 @@
 /* Padding below the footer and lighter body text */
 
 body {
+  padding-top: 200px;
   padding-bottom: 40px;
-  color: #5a5a5a;
+  background-color: #5a5a5a;
 }
 
-
+h1{
+  color: white;
+}
 /* CUSTOMIZE THE NAVBAR
 -------------------------------------------------- */
 
@@ -40,30 +43,87 @@ body {
 -------------------------------------------------- */
 
 /* Carousel base class */
-.carousel {
-  height: 500px;
-  margin-bottom: 60px;
-}
-/* Since positioning the image, we need to help out the caption */
-.carousel-caption {
-  z-index: 10;
+.container1 {
+  margin: 0 auto;
+  width: 250px;
+  height: 200px;
+  position: relative;
+  perspective: 1000px;
+  margin-bottom: 130px;
 }
 
-/* Declare heights because of positioning of img element */
-.carousel .item {
-  height: 500px;
-  background-color: #777;
-}
-.carousel-inner > .item > img {
+.carousel {
+  height: 100%;
+  width: 100%;
   position: absolute;
-  top: 0px;
-  left: 0px;
-  padding-top: 70px;
-  padding-left:20%;
-  padding-right:20%;
-  min-width: 100%;
-  height: 500px;
+  transform-style: preserve-3d;
+  transition: transform 1s;
 }
+
+.item {
+  display: block;
+  position: absolute;
+  background: #000;
+  width: 250px;
+  height: 200px;
+  line-height: 200px;
+  font-size: 5em;
+  text-align: center;
+  color: #FFF;
+  opacity: 1.0;
+  border-radius: 10px;
+}
+
+.a {
+  transform: rotateY(0deg) translateZ(250px);
+  background: #5a5a5a;
+  
+}
+.b {
+  transform: rotateY(60deg) translateZ(250px);
+  background: #5a5a5a;
+  
+}
+.c {
+  transform: rotateY(120deg) translateZ(250px);
+  background: #5a5a5a;
+  
+}
+.d {
+  transform: rotateY(180deg) translateZ(250px);
+  background: #5a5a5a;
+ 
+}
+.e {
+  transform: rotateY(240deg) translateZ(250px);
+  background: #5a5a5a;
+ 
+} 
+.f {
+  transform: rotateY(300deg) translateZ(250px);
+  background: #5a5a5a;
+ 
+}
+
+.next, .prev {
+  color: #444;
+  position: absolute;
+  top: 100px;
+  padding: 1em 2em;
+  cursor: pointer;
+  background: #CCC;
+  border-radius: 5px;
+  border-top: 1px solid #FFF;
+  box-shadow: 0 5px 0 #999;
+  transition: box-shadow 0.1s, top 0.1s;
+}
+.next:hover, .prev:hover { color: #000; }
+.next:active, .prev:active {
+  top: 104px;
+  box-shadow: 0 1px 0 #999;
+}
+.next { right: 15%; }
+.prev { left: 15%; }
 
 
 /* MARKETING CONTENT
