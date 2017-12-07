@@ -38,11 +38,9 @@ function getGraph(){
     
     document.getElementById("pic"+i).innerHTML="<img src=\"" + output + "\">";
     }
-
   });
 
-
-    /////////Get Albums id to get genres///////////////
+       /////////Get Albums id to get genres///////////////
     DZ.api('/user/me/albums', function(response){
     for (var i = 0; i <response.data.length; i++) {
     idOutput = response.data[i].id;
@@ -59,6 +57,26 @@ function getGraph(){
 }
 
   });
+
+
+  
+  // Here I just call the api for a user's playlist
+  DZ.api('/user/me/playlists', function(response){
+  //store response
+  var id = response.data[1].id;
+  //add it to the iframe link
+  var link = "https://www.deezer.com/plugins/player?format=classic&autoplay=false&playlist=true&width=700&height=350&color=007FEB&layout=dark&size=medium&type=playlist&id=" + id + "&app_id=1"
+   var iframe = document.createElement('iframe');
+   iframe.frameBorder=0;
+   iframe.width="450px";
+   iframe.height="250px";
+   iframe.id="randomid";
+   iframe.setAttribute("src", link);
+   document.getElementById("play").appendChild(iframe);
+   
+  });
+
+
 
 
 //    // no user session available, someone you dont know
