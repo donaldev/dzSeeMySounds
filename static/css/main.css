@@ -1,36 +1,57 @@
 .circle{
+    cursor: pointer;
     border-radius: 50%;
     width: 100px;
     height:100px;
-    border:1px solid black;
+   
     margin:0 auto;
+    text-align:center;
+    background-image:radial-gradient(circle,black,#5a5a5a);
+    background-repeat:repeat-x;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    line-height: 80px;
+    color:lightgrey;
+}
 
+.play{
+    margin:0 auto;
+}
+
+.listbpm{
+    visibility:hidden;
 }
 
 .circle1{
-    background-color:black;
+    font-size:15px;
+    
 
 }
 
 .circle2{
-   width:120px;
-   height:120px;
-   background-color:yellow; 
+   width:140px;
+   height:140px;
+   font-size:20px;
+   line-height: 120px;
+    
 }
 
 .circle3{
-  width:140px;
-  height:140px;
-  background-color:pink;  
+  width:180px;
+  height:180px;
+  font-size: 30px;
+  line-height: 180px;
+   
 }
 
 .circle4{
-    width:160px;
-    height: 160px;
-    background-color:greenyellow;
+    width:220px;
+    height: 220px;
+    font-size:40px;
+    line-height: 220px;
+    
 }
 
 .circle:hover{
-
-   border: 3px solid white; 
+   
+   border: 7px solid #5a5a5a; 
 }

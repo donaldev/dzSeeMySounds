@@ -93,3 +93,21 @@ function getGraph(){
     DZ.logout();
 
         }
+
+function getBPM(range){
+  var bpmRangeU = range;//upper range
+  var bpmRangeL = range - 20;//lower range
+
+
+//=============== WORK TO BE DONE HERE =============//
+
+
+  DZ.api('user/me/tracks',function(response){
+     var recTrackLength = response.data.length;
+    console.log(response);
+    for(i=0;i<recTrackLength;i++){
+      console.log(response.data[i]);
+    }
+  });
+
+}
