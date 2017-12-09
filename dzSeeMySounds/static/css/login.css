@@ -1,0 +1,260 @@
+@import url(https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css);
+@import url(https://fonts.googleapis.com/css?family=Lato:300,400,700);
+
+
+
+
+/******************import ********************/
+
+#main-homepage {
+  overflow-x: hidden;
+  background: -webkit-linear-gradient(rgba(40, 41, 51, 0.25), rgba(31, 32, 42, 0.3), rgba(29, 30, 39, 0.35), rgba(25, 26, 34, 0.4), rgba(21, 22, 28, 0.45), rgba(14, 15, 19, 0.5)), url("/static/img/bakgrnd.jpg") no-repeat;
+  background: -o-linear-gradient(rgba(40, 41, 51, 0.25), rgba(31, 32, 42, 0.3), rgba(29, 30, 39, 0.35), rgba(25, 26, 34, 0.4), rgba(21, 22, 28, 0.45), rgba(14, 15, 19, 0.5)), url("/static/img/bakgrnd.jpg") no-repeat;
+  background: linear-gradient(rgba(40, 41, 51, 0.25), rgba(31, 32, 42, 0.3), rgba(29, 30, 39, 0.35), rgba(25, 26, 34, 0.4), rgba(21, 22, 28, 0.45), rgba(14, 15, 19, 0.5)), url("/static/img/bakgrnd.jpg") no-repeat;
+  background-size: cover;
+  height: 100vh;
+  width: 100%; }
+
+#logo-word {
+  transform: scale(1);
+  transition: transform 0.4s 0.2s;
+  text-decoration: none;
+  color: #3A3C50; }
+
+#logo-word:hover {
+  transform: scale(1.2); }
+
+.navbar-default {
+  margin: 0;
+  border: 0; }
+
+.navbar-default .navbar-nav > li > a, .navbar-default .navbar-nav > li > a:focus, .navbar-default .navbar-nav > li > a:hover {
+  color: white; }
+
+.navbar-nav li {
+  margin-top: 10px;
+  display: inline-block;
+  font-weight: 500;
+  color: white; }
+
+.navbar-nav .nav-item a {
+  margin: 5px 10px;
+  padding: 7px 10px;
+  color: white;
+  border-bottom: solid 4px transparent; }
+
+.navbar-nav .nav-item a:hover {
+  color: white;
+  background-color: transparent;
+  border-bottom: solid 4px #70BAFE; }
+/*
+#login-btn, signup-btn {
+  text-align: center;
+  border: 3px solid #70BAFE;
+  border-radius: 25px;
+  width: 75px; }
+
+#login-btn:hover, signup-btn {
+  text-align: center;
+  border: 3px solid #70BAFE;
+  background-color: #70BAFE;
+  border-radius: 25px;
+  width: 75px; }
+*/
+#dark-spacing {
+  height: 325px;
+  background-color: black; }
+
+.icon-bar {
+  color: black; }
+
+.btn-login {
+  border: solid 3px white;
+  border-radius: 30px;
+  color: white; }
+
+.btn-login:hover, .btn-login:active {
+  border: solid 3px #70BAFE;
+  box-shadow: none;
+  border-radius: 25px;
+  background-color: #70BAFE;
+  font-weight: 700;
+  color: white;
+  border-bottom: none; }
+
+#donutChart {
+  text-align: center; }
+
+#login {
+  margin-top: 20%;
+  padding: 30px 50px;
+  font-family: "Roboto Slab", "Helvetica-Neue", Arial, sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: #EEE;
+  text-align: center;
+  background-color: rgba(13, 14, 18, 0.7);
+  border-radius: 5px; }
+/*
+#login-button, #signup-button {
+  margin-top: 10px; }
+*/
+#login h1 {
+  line-height: 1.3em;
+  color: #EEE;
+  margin-bottom: 20px; }
+
+#login p {
+  margin-top: 10px;
+  letter-spacing: 0.05em;
+  line-height: 1.8em;
+  font-weight: 400;
+  color: #EEE; }
+
+#success {
+  margin-top: 10px; }
+
+
+.btn-primary {
+  background-color: #70BAFE;
+  border-color: #70BAFE;
+  border-radius: 10px; }
+
+.btn-primary:hover {
+  background-color: #44A2F8;
+  border-color: #44A2F8; }
+
+
+
+
+/* Global Button Styles */
+a.animated-button:link, a.animated-button:visited {
+  z-index: 999999;
+  position: relative;
+  display: block;
+  margin: 30px auto 0;
+  padding: 14px 15px;
+  color: #fff;
+  font-size:14px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  overflow: hidden;
+  letter-spacing: .08em;
+  border-radius: 0;
+  text-shadow: 0 0 1px rgba(0, 0, 0, 0.2), 0 1px 0 rgba(0, 0, 0, 0.2);
+  -webkit-transition: all 1s ease;
+  -moz-transition: all 1s ease;
+  -o-transition: all 1s ease;
+  transition: all 1s ease;
+}
+a.animated-button:link:after, a.animated-button:visited:after {
+  content: "";
+  position: absolute;
+  height: 0%;
+  left: 50%;
+  top: 50%;
+  width: 150%;
+  z-index: -1;
+  -webkit-transition: all 0.75s ease 0s;
+  -moz-transition: all 0.75s ease 0s;
+  -o-transition: all 0.75s ease 0s;
+  transition: all 0.75s ease 0s;
+}
+a.animated-button:link:hover, a.animated-button:visited:hover {
+  color: #FFF;
+  text-shadow: none;
+}
+a.animated-button:link:hover:after, a.animated-button:visited:hover:after {
+  height: 450%;
+}
+a.animated-button:link, a.animated-button:visited {
+  position: relative;
+  display: block;
+  /*margin: 30px auto 0;*/
+  margin: 0;
+  padding: 14px 15px;
+  color: #fff;
+  font-size:14px;
+  border-radius: 0;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  overflow: hidden;
+  letter-spacing: .08em;
+  text-shadow: 0 0 1px rgba(0, 0, 0, 0.2), 0 1px 0 rgba(0, 0, 0, 0.2);
+  -webkit-transition: all 1s ease;
+  -moz-transition: all 1s ease;
+  -o-transition: all 1s ease;
+  transition: all 1s ease;
+}
+
+/* Victoria Buttons */
+
+a.animated-button.victoria-one {
+  border: 2px solid #D24D57;
+}
+a.animated-button.victoria-one:after {
+  background: #D24D57;
+  -moz-transform: translateX(-50%) translateY(-50%) rotate(-25deg);
+  -ms-transform: translateX(-50%) translateY(-50%) rotate(-25deg);
+  -webkit-transform: translateX(-50%) translateY(-50%) rotate(-25deg);
+  transform: translateX(-50%) translateY(-50%) rotate(-25deg);
+}
+a.animated-button.victoria-two {
+  border: 2px solid #D24D57;
+}
+a.animated-button.victoria-two:after {
+  background: #D24D57;
+  -moz-transform: translateX(-50%) translateY(-50%) rotate(25deg);
+  -ms-transform: translateX(-50%) translateY(-50%) rotate(25deg);
+  -webkit-transform: translateX(-50%) translateY(-50%) rotate(25deg);
+  transform: translateX(-50%) translateY(-50%) rotate(25deg);
+}
+a.animated-button.victoria-three {
+  border: 2px solid #D24D57;
+}
+a.animated-button.victoria-three:after {
+  background: #D24D57;
+  opacity: .5;
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -ms-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+}
+a.animated-button.victoria-three:hover:after {
+  height: 140%;
+  opacity: 1;
+}
+a.animated-button.victoria-four {
+  border: 2px solid #D24D57;
+}
+a.animated-button.victoria-four:after {
+  background: #D24D57;
+  opacity: .5;
+  -moz-transform: translateY(-50%) translateX(-50%) rotate(90deg);
+  -ms-transform: translateY(-50%) translateX(-50%) rotate(90deg);
+  -webkit-transform: translateY(-50%) translateX(-50%) rotate(90deg);
+  transform: translateY(-50%) translateX(-50%) rotate(90deg);
+}
+a.animated-button.victoria-four:hover:after {
+  opacity: 1;
+  height: 600% !important;
+}
+
+
+/*# sourceMappingURL=style.css.map */
+a.btn.btn-sm.animated-button.victoria-two {
+    position: relative;
+    /* float: right; */
+    width: 50%;
+    /* clear: both; */
+}
+a.btn.btn-sm.animated-button.victoria-one {
+    position: relative;
+    float: left;
+    /* clear: both; */
+    width: 50%;
+}

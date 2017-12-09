@@ -1,0 +1,80 @@
+{% extends "index.html"%}
+{% block body %}
+<link rel="stylesheet" type="text/css" href="./static/css/login.css">
+<script src="http://cdn-files.deezer.com/js/min/dz.js"></script>
+<script>
+            DZ.init({
+            appId  : '261582',
+            channelUrl : 'http://127.0.0.1:5000',
+        });
+</script>
+<div id="dz-root"></div>
+
+
+
+
+
+
+<div class="container-fluid" style="padding: 0;">
+    <div id="main-homepage">
+        <div class="row">
+             <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-8 col-xs-offset-2">
+                 <div id="login">
+                     <h1>We sell; </h1>
+                     <p>Marijuana (Cannabis)
+ MDMA (Ecstasy/Molly)
+ Mescaline (Peyote)
+ Methamphetamine.
+ Over-the-counter. Cough/Cold Medicines. (Dextromethorphan or DXM)
+ PCP.
+ Prescription Opioids.
+ Prescription Sedatives & Tranquilizers.</p>
+                     <a href="https://www.deezer.com/register" target="_blank" id="signup-button" class="btn btn-sm animated-button victoria-one">Sign-Up</a>
+                     <a href="#" onclick="login();" id="login-button" class="btn btn-sm animated-button victoria-two">Sign-In</a>
+                 </div>
+             </div>
+         </div>
+ 
+     <header>
+     <div class="container">
+         <div class="row">
+             <div class="log-in col-lg-6 col-md-offset-2">
+             </div>
+         </div>
+     </div>
+     </header>
+     </div>
+   </div>
+
+
+<script src="./static/js/login.js"></script>
+
+<!-- 
+    // 	DZ.init({
+    //   appId  : '261582',
+    //   channelUrl : 'http://127.0.0.1:5000',
+    // });
+
+        // function login(){
+        //   DZ.login(function(response) {
+        //     if (response.authResponse) {
+        //       console.log(response);
+        //       if (response.status == 'connected') {
+        //         DZ.api('/user/me', function(user) {
+        //           window.location.href = 'http://127.0.0.1:5000/main';
+        //            });
+        //           }
+        //         }
+        //       }, {perms: 'email, basic_access, online_access, manage_library, manage_community, delete_library, listening_history'});
+        //     }
+ -->
+
+
+<style>
+
+
+
+
+</style>
+
+{% endblock %}

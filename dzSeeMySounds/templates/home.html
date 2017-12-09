@@ -1,0 +1,252 @@
+{% extends "index.html"%}
+{% block body %}
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<!--Favicon-->
+<link rel="apple-touch-icon" sizes="57x57" href="../static/img/favicon_folder/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="../static/img/favicon_folder/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../static/img/favicon_folder/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="../static/img/favicon_folder/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../static/img/favicon_folder/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="../static/img/favicon_folder/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="../static/img/favicon_folder/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="../static/img/favicon_folder/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../static/img/favicon_folder/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="../static/img/favicon_folder/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../static/img/favicon_folder/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="../static/img/favicon_folder/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../static/img/favicon_folder/favicon-16x16.png">
+<link rel="manifest" href="../static/img/favicon_folder/manifest.json">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
+<!--EndOfFavicon-->
+
+
+<title>Deezer </title>
+
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<link rel="stylesheet" type="text/css" href="./static/css/home.css">
+<link rel="stylesheet" type="text/css" href="./static/css/main.css">
+<link rel="stylesheet" type="text/css" href="./static/css/carousel.css">
+
+
+    
+
+      <!-- Link for back to top button -->
+			<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+      <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+          
+      <!-- d3 library -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.4.11/d3.min.js"></script>
+      <!-- d3 scripts -->
+      <link rel="stylesheet" type="text/css" href="./static/css/d3.css">
+
+<script src="http://cdn-files.deezer.com/js/min/dz.js"></script>
+<div id="dz-root"></div>
+
+<!--[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]-->
+<!--[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]-->
+<!-- Section: back to top button    -->
+<a href="javascript:" id="return-to-top"><i class="icon-chevron-up"></i></a>
+
+
+<!--[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]-->
+<!--[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]-->
+<!--Section : Navbar -->
+<div class="navbar-wrapper">
+  <div class="container nav-container">
+
+    <nav class="navbar navbar-inverse navbar-static-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-left"><img src="/static/img/favicon_1.png" alt="Deezer's Logo" height="50" width="200"></a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#myCarousel">Home</a></li>
+            <li><a href="#BP">BPM</a></li>
+            <li><a href="#Graph">Chart</a></li>
+            <li><a href="#Tunes">PlayATune</a></li>
+           </ul>
+           <ul class="nav navbar-nav navbar-right">
+           <!-- <li><a href="#"><i class="fa fa-home" aria-hidden="true"></i></a></li> -->
+            <li><a href="#about"><i class="fa fa-info" aria-hidden="true"></i></a></li>
+           <!-- <li><a href="#contact"></a></li>-->
+            <li><a onclick="logout()" href="#" data-target="#myModal" data-toggle="modal"><i class="fa fa-sign-out" aria-hidden="true"></i></a></li>
+          </ul> 
+        </div>
+      </div>
+    </nav>
+
+  </div>
+</div>
+<!-- End of Nav-->
+
+<!--[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]-->
+<!--[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]-->
+<!-- POP MODAL -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Notice</h4>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to Log out?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" onclick="javascript:window.location.href='/'" data-dismiss="modal">Log me out</button>
+        <button type="button" class="btn btn-default"  data-dismiss="modal">Dismiss</button>
+
+      </div>
+    </div>
+  </div>
+</div>
+  <!-- end of modal -->   
+
+
+<!--[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]-->
+<!--[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]-->
+<!-- Section : Carousel -->
+<div class="container musical-container" id="myCarousel">
+  <div class="row">
+    <div class="col-lg-2 btnPrev btn arrow"> &lt;  </div>
+      <div class="col-lg-8">
+        <div class="container1">
+          <div class="carousel">
+            <div id="pic0" class="item a"></div>
+            <div id="pic1" class="item b"></div>
+            <div id="pic2" class="item c"></div>
+            <div id="pic3" class="item d"></div>
+            <div id="pic4" class="item e"></div>
+            <div id="pic5" class="item f"></div>
+          </div>  
+        </div>
+      </div>  
+    <div class="col-lg-2 btnNext btn arrow" > &gt;	 </div>    
+  </div>
+</div>
+<!-- end of carousel -->
+
+<!--[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]-->
+<!--[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]-->
+<!--Section : BPM Chart -->
+<div class="container" id="BP">
+
+    <div class="BPM_container"><h1>BPM </h1>
+    <hr>
+    </div>
+<div class="row">
+      <div class="col-lg-3 pulse-button">
+      <div class="circle circle1 ">&gt;80 BPM</div>
+      <div class="listbpm list1">hehe</div>
+      </div>
+
+      <div class="col-lg-3">    
+      <div class="circle circle2 ">&gt;100 BPM</div>
+      <div class="listbpm list2">hehe</div>
+      </div>
+
+      <div class="col-lg-3">
+      <div class="circle circle3 ">&gt;120 BPM</div>
+      <div class="listbpm list3">hehe</div>
+      </div>
+
+      <div class="col-lg-3">
+      <div class="circle circle4 ">&gt;140 BPM</div>
+      <div class="listbpm list4">hehe <ul>
+        <li>Hello</li> 
+        <li>Hello</li> 
+      </ul></div>
+      </div>
+  </div>
+      <div class="row">
+          <div class="col-lg-3">
+         
+          </div>
+    
+          <div class="col-lg-3">    
+          
+          </div>
+    
+          <div class="col-lg-3">
+          
+          </div>
+    
+          <div class="col-lg-3">
+          
+          </div>
+  </div>         
+
+    
+</div>
+<!--End of BPM Chart -->
+
+
+<!--[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]-->
+<!--[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]-->
+<!-- Section : D3 -->
+<div class="BPM_container container" id="Graph"  ><h1>3D_Graph</h1>
+  
+    <section id="graph" style="background:blue;"></section>  
+  
+  
+  
+  </div>
+<!-- End of D3 -->
+
+<!--[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]-->
+<!--[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]-->
+<!-- Section : Playlist Generation / play-viewport -->
+<div class="container"  id="Tunes"><h1>Your Playlist</h1>
+  <hr>
+<div class="row">
+<div class="col-lg-4">
+</div>
+<div class="col-lg-4">
+  <div id="play"></div>
+</div>
+
+  <div class="col-lg-4">
+  </div>
+</div>
+  <!-- <iframe scrolling="no" frameborder="0" allowTransparency="true" src="https://www.deezer.com/plugins/player?format=classic&autoplay=false&playlist=true&width=700&height=350&color=007FEB&layout=dark&size=medium&type=playlist&id=30595446&app_id=1" width="300" height="180"></iframe> -->
+</div>
+<!-- end of playlist generation -->
+
+
+ 
+
+<script src= "https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+
+    <script src="https://d3js.org/d3.v3.min.js"></script>
+    <!--font awesome link-->
+    <script src="https://use.fontawesome.com/cc3fb6949b.js"></script>
+    <script src="./static/js/carousel.js"></script>
+    <script src="./static/js/main.js"></script>
+    <script src="./static/js/alt.js"></script>
+    <script
+    src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"
+    integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30="
+    crossorigin="anonymous"></script>
+
+
+
+{% endblock %}
