@@ -1,3 +1,181 @@
+
+
+/*[][][][][][][][][][][][][][][][][][][][][][][][][][][][]*/
+/*[][][][][][][][][][][][][][][][][][][][][][][][][][][][]*/
+/* ================= Scroll-Bar ================= */
+
+/*scroll bar*/
+::-webkit-scrollbar {
+    width: 15px;
+}
+
+    @media screen and (max-width: 800px) {
+    ::-webkit-scrollbar {
+        width: 10.5px;
+    }
+    }
+
+ 
+/* Track */
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    -webkit-border-radius: 100px;
+    border-radius: 100px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: #728fa2; 
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
+
+::-webkit-scrollbar-thumb:active {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: #00a1e5; 
+
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
+
+::-webkit-scrollbar-thumb:window-inactive {
+  background: #728fa2; 
+}
+
+::-webkit-scrollbar-track:active{
+/*background: #728fa2; */
+}
+
+
+}
+
+/*remove links*/
+a:hover
+{
+  text-decoration-style: none;
+  text-decoration: none;
+}
+/*[][][][][][][][][][][][][][][][][][][][][][][][][][][][]*/
+/*[][][][][][][][][][][][][][][][][][][][][][][][][][][][]*/
+/* General container placement shit 
+.container.musical-container {
+    height: 79vh;
+    margin: 0 auto;
+    margin-top: 10rem;
+    padding: 0;
+}*/
+
+
+
+
+
+
+/*[][][][][][][][][][][][][][][][][][][][][][][][][][][][]*/
+/*[][][][][][][][][][][][][][][][][][][][][][][][][][][][]*/
+/*Navbar*/
+.nav-container
+{
+    width: 100%;
+    margin: 0;
+    padding: 0 !important;
+    
+}
+.navbar-wrapper {
+    /* width: 100%; */
+    margin: 0 !important;
+    padding: 0;
+    position: fixed !important;
+}
+
+
+/* underline on hover effect */
+ul.nav > li > a:hover:before {
+    visibility: visible;
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+}
+
+ul.nav > li > a:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color:#00a1e5;
+    visibility: hidden;
+    -webkit-transform: scaleX(0);
+    transform: scaleX(0);
+    -webkit-transition: all 0.3s ease-in-out 0s;
+    transition: all 0.3s ease-in-out 0s;
+}
+
+
+ul.nav.navbar-nav.navbar-right > li > a > i {
+    font-size: 2rem;
+}
+
+/*[][][][][][][][][][][][][][][][][][][][][][][][][][][][]*/
+/*[][][][][][][][][][][][][][][][][][][][][][][][][][][][]*/
+/*Back to top button */
+
+#return-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 37px;
+    background: rgb(0, 0, 0);
+    background: rgba(0, 0, 0, 0.7);
+    width: 50px;
+    height: 50px;
+    display: block;
+    text-decoration: none;
+    -webkit-border-radius: 35px;
+    -moz-border-radius: 35px;
+    border-radius: 35px;
+    display: none;
+    -webkit-transition: all 0.3s linear;
+    -moz-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    z-index: 100;
+}
+#return-to-top i {
+    color: #fff;
+    margin: 0;
+    position: relative;
+    left: 16px;
+    top: 13px;
+    font-size: 19px;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+#return-to-top:hover {
+    background: rgba(0, 0, 0, 0.9);
+}
+#return-to-top:hover i {
+    color: #00a1e5;
+    top: 5px;
+}
+
+
+
+
+
+a#return-to-top {
+    right: 60px;
+}
+
+
+/*[][][][][][][][][][][][][][][][][][][][][][][][][][][][]*/
+/*[][][][][][][][][][][][][][][][][][][][][][][][][][][][]*/
+/*BPM */
+/* a pulsing button animation */
+
 .circle{
     cursor: pointer;
     border-radius: 50%;
@@ -54,4 +232,121 @@
 .circle:hover{
    
    border: 7px solid #5a5a5a; 
+}
+
+
+
+
+
+
+
+
+
+svg {
+    width: 100%;
+   /* height: 100%; */
+    position: center;
+}
+
+text {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    fill: #003b4e;
+}
+
+text.label {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    fill: #003b4e;
+    font-size: 13px;
+}
+
+.bubble-node {
+    cursor: pointer;
+}
+
+.bubble {
+    opacity: 0.7
+}
+
+.bubble-0 {
+    fill: #cddc39;
+}
+
+.bubble-1 {
+    fill: #399c1d;
+}
+
+.bubble-2 {
+    fill: #aacf32;
+    opacity: 0.85;
+}
+
+.bubble-3 {
+    fill: #9962c0;
+}
+
+.bubble-4 {
+    fill: #9ac2b9;
+    opacity: 0.85;
+}
+
+.bubble-5 {
+    fill: #f4aa00;
+}
+
+.bubble-6 {
+    fill: #00539f;
+    opacity: 0.85;
+}
+
+.bubble-7 {
+    fill: #caa900;
+}
+
+.bubble-8 {
+    fill: #cddc39;
+    opacity: 0.85;
+}
+
+.bubble-9 {
+    fill: #b2ebf2;
+}
+
+.bubble-10 {
+    fill: #009688;
+    opacity: 0.85;
+}
+
+
+
+/*[][][][][][][][][][][][][][][][][][][][][][][][][][][][]*/
+/*[][][][][][][][][][][][][][][][][][][][][][][][][][][][]*/
+/* info popup */
+
+img.user-avatar {
+    height: 12rem;
+    margin: 0 auto;
+}
+
+.col-sm-3.col-md-6 {
+    text-align: center;
+}
+
+
+hr.style14 { 
+    border: 0; 
+    height: 1px; 
+    background-image: -webkit-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+    background-image: -moz-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+    background-image: -ms-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+    background-image: -o-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0); 
+  }
+
+  
+
+/*[][][][][][][][][][][][][][][][][][][][][][][][][][][][]*/
+/*[][][][][][][][][][][][][][][][][][][][][][][][][][][][]*/
+/* playlist viewer yokie */
+
+  div#Tunes {
+    min-height: 500px;
 }
