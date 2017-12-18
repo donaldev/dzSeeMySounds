@@ -48,7 +48,7 @@
 }
 
 
-}
+
 
 /*remove links*/
 a:hover
@@ -323,12 +323,16 @@ text.label {
 /* info popup */
 
 img.user-avatar {
-    height: 12rem;
+    height: 22rem;
     margin: 0 auto;
+    border-radius: 50%;
 }
 
 .col-sm-3.col-md-6 {
     text-align: center;
+    position: relative; 
+    float: left;
+    clear: both;
 }
 
 

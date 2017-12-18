@@ -9,6 +9,7 @@
 
 
 
+      
 
 function getGraph(){
 
@@ -29,12 +30,31 @@ function getGraph(){
       var apiresponse = httpGet(url)
       console.log(apiresponse)
       console.log(id);
-     /*
-      ////////////////Greet User with alert//////////////////////
-    DZ.api('/user/me', function(response){
-      alert(name);
-    });      
-    */
+
+
+
+      ////////////////Get User Data//////////////////////
+      //here we make a call for the user specific details, store the variables and when this parent function is run on page loading - so is this innerHTML injection(s)
+        DZ.api('user/me',function(response){
+            var name = response.name;
+            var pic = response.picture_medium;
+            var email = response.email;
+
+      //opening alert to recommend use of the information pop-up
+        // alert('Hey '+name+", we recommend you make use of our 'information pop-up' which can be found at the top of your screen on the navigation-bar. Just look for the 'i' icon!")
+
+            //check if the name is undefined...in which case return an error string..the error handling for the image is alot simpler and done within the img tag
+            if (name === undefined) {
+                // name = "Sorry but there was an error retrieving your name, so here is your email; "+email;
+                     name = "Sorry but there was an error retrieving your name..";
+            }
+
+            document.getElementById("user_name").innerHTML +="<h4>"+"Hey there,"+"</h4>" + "<h4 class="+"user_name_css"+">"+name+"</h4>" + ".";
+            document.getElementById("user_image").innerHTML +="<img  onerror="+"this.onerror=null;this.src='./static/img/backup.jpg';this.style='border-radius:0'"+" alt=User_Image class="+"user-avatar"+" src=\"" + pic + "\">"; 
+            //the above line for the user's image has a default src incase the user has no image for their profile so the call returns an error .
+        });
+    
+
 
       ////////////////Slideshow//////////////////////
     DZ.api('/chart', function(response){
@@ -51,36 +71,38 @@ function getGraph(){
     for (var i = 0; i <response.data.length; i++) {
     idOutput = response.data[i].id;
 
-    DZ.api('album/'+ idOutput, function(response){
-    for (var i = 0; i <1; i++) {
-    if (typeof response.genres.data[i] !== 'undefined') {
-    console.log(response.genres.data[i].name);
-  }
 
-}
+        //d3 album section
+            DZ.api('album/'+ idOutput, function(response){
+            for (var i = 0; i <1; i++) {
+            if (typeof response.genres.data[i] !== 'undefined') {
+            console.log(response.genres.data[i].name);
+        }
+
+        }
+        });
+
+    }
+
   });
 
-}
 
-  });
-
-
-  
-  // Here I just call the api for a user's playlist
-  DZ.api('/user/me/playlists', function(response){
-  //store response
-  var id = response.data[1].id;
-  //add it to the iframe link
-  var link = "https://www.deezer.com/plugins/player?format=classic&autoplay=false&playlist=true&width=700&height=350&color=007FEB&layout=dark&size=medium&type=playlist&id=" + id + "&app_id=1"
-   var iframe = document.createElement('iframe');
-   iframe.frameBorder=0;
-   iframe.width="450px";
-   iframe.height="250px";
-   iframe.id="randomid";
-   iframe.setAttribute("src", link);
-   document.getElementById("play").appendChild(iframe);
-   
-  });
+    /////////Playlist Viewport///////////////
+    // Here I just call the api for a user's playlist
+    DZ.api('/user/me/playlists', function(response){
+    //store response
+    var id = response.data[1].id;
+    //add it to the iframe link
+    var link = "https://www.deezer.com/plugins/player?format=classic&autoplay=false&playlist=true&width=700&height=350&color=007FEB&layout=dark&size=medium&type=playlist&id=" + id + "&app_id=1"
+    var iframe = document.createElement('iframe');
+    iframe.frameBorder=0;
+    iframe.width="450px";
+    iframe.height="250px";
+    iframe.id="randomid";
+    iframe.setAttribute("src", link);
+    document.getElementById("play").appendChild(iframe);
+    
+    });
 
 
 
@@ -119,61 +141,9 @@ function getBPM(range){
 }
 
 
-
-
-
 /*[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]*/
-
-(function() {
-  
-    // Fake JSON data
-    var json = {"countries_msg_vol": {
-      "CA": 1700, "US": 393, "BB": 12, "CU": 9, "BR": 89, "MX": 192, "PY": 32, "UY": 9, "VE": 25, "BG": 42, "CZ": 12, "HU": 7, "RU": 184, "FI": 42, "GB": 162, "IT": 87, "ES": 65, "FR": 42, "DE": 102, "NL": 12, "CN": 92, "JP": 65, "KR": 87, "TW": 9, "IN": 98, "SG": 32, "ID": 4, "MY": 7, "VN": 8, "AU": 129, "NZ": 65, "GU": 11, "EG": 18, "LY": 4, "ZA": 76, "A1": 2, "Other": 254 
-    }};
-    
-      // D3 Bubble Chart 
-  
-      var diameter = 600;
-  
-      var svg = d3.select('#graph').append('svg')
-                      .attr('width', diameter)
-                      .attr('height', diameter);
-  
-      var bubble = d3.layout.pack()
-                  .size([diameter, diameter])
-                  .value(function(d) {return d.size;})
-           // .sort(function(a, b) {
-                  // 	return -(a.value - b.value)
-                  // }) 
-                  .padding(3);
-    
-    // generate data with calculated layout values
-    var nodes = bubble.nodes(processData(json))
-                          .filter(function(d) { return !d.children; }); // filter out the outer bubble
-   
-    var vis = svg.selectAll('circle')
-                      .data(nodes);
-    
-    vis.enter().append('circle')
-              .attr('transform', function(d) { return 'translate(' + d.x + ',' + d.y + ')'; })
-              .attr('r', function(d) { return d.r; })
-              .attr('class', function(d) { return d.className; });
-    
-    function processData(data) {
-      var obj = data.countries_msg_vol;
-  
-      var newDataSet = [];
-  
-      for(var prop in obj) {
-        newDataSet.push({name: prop, className: prop.toLowerCase(), size: obj[prop]});
-      }
-      return {children: newDataSet};
-    }
-    
-  })();
-
-
-/*[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]*//*Dividing the two static d3 charts*/
+/*[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]*/
+/*[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]*/
 
   datasetTotal = [
     { label: 'Rock', value: 19 },
@@ -181,26 +151,32 @@ function getBPM(range){
     { label: 'EDM', value: 13 },
     { label: 'Donkage', value: 17 },
     { label: 'Country', value: 19 },
-    { label: 'Jazz', value: 27 }
+    { label: 'eee', value: 22 },
+    { label: 'p', value: 25 },
+    { label: ';', value: 24 },
+    { label: 'l', value: 21 },
+    { label: 'k', value: 29 },
+    { label: 'j', value: 26 },
+    { label: 'jjj', value: 27 }
 ];
 
-datasetOption1 = [
-    { label: "Category 11", value: 22 },
-    { label: "Category 12", value: 33 },
-    { label: "Category 13", value: 4 },
-    { label: "Category 14", value: 15 },
-    { label: "Category 15", value: 36 },
-    { label: "Category 16", value: 0 }
-];
+// datasetOption1 = [
+//     { label: "Category 11", value: 22 },
+//     { label: "Category 12", value: 33 },
+//     { label: "Category 13", value: 4 },
+//     { label: "Category 14", value: 15 },
+//     { label: "Category 15", value: 36 },
+//     { label: "Category 16", value: 0 }
+// ];
 
-datasetOption2 = [
-    { label: "Category 21", value: 10 },
-    { label: "Category 22", value: 20 },
-    { label: "Category 23", value: 30 },
-    { label: "Category 24", value: 5 },
-    { label: "Category 25", value: 12 },
-    { label: "Category 18", value: 23 }
-];
+// datasetOption2 = [
+//     { label: "Category 21", value: 10 },
+//     { label: "Category 22", value: 20 },
+//     { label: "Category 23", value: 30 },
+//     { label: "Category 24", value: 5 },
+//     { label: "Category 25", value: 12 },
+//     { label: "Category 18", value: 23 }
+// ];
 
 
 d3.selectAll("input").on("change", selectDataset);
