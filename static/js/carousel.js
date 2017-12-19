@@ -26,6 +26,8 @@ function rotate(e){
 
 
 $(".circle1").on('click',function(){
+
+  getBPM(100);
   //getBPM(80);
   //getbpm() of users tracks and subsequently return their name if it is within the selected bpm
   if($(".list1").css('visibility')=='hidden'){
@@ -42,7 +44,7 @@ $(".circle1").on('click',function(){
 
 $(".circle2").on('click',function(){
 
-  //getBPM(100)
+  getBPM(125);
   
   //getbpm() of users tracks and subsequently return their name if it is within the selected bpm
   if($(".list2").css('visibility')=='hidden'){
@@ -58,7 +60,7 @@ $(".circle2").on('click',function(){
 
 
 $(".circle3").on('click',function(){
-  //getbpm(120);
+  getBPM(150);
 
   
 
@@ -77,7 +79,7 @@ $(".circle3").on('click',function(){
 
 $(".circle4").on('click',function(){
   
-  getBPM(140);
+  getBPM(175);
   if($(".list4").css('visibility')=='hidden'){
     
     $(".list4").css('visibility','visible') 
@@ -95,5 +97,14 @@ $(".circle4").on('click',function(){
 
 
 
+// function displayList1(title,artist,bpm){
+
+//   $('.list1').append("<a href='#' class='list-group-item'><span class='glyphicon glyphicon-music'></span> "+title +" - "+artist+" <span class='badge'>"+bpm+"</span></a>");
+  
+// }
+
+
 
 });
+
+

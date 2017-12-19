@@ -5,8 +5,8 @@
 
       window.onload = function(){
       getGraph();
+      
       };
-
 
 
       
@@ -122,23 +122,119 @@ function getGraph(){
 
         }
 
-function getBPM(range){
-  var bpmRangeU = range;//upper range
-  var bpmRangeL = range - 20;//lower range
 
 
-//=============== WORK TO BE DONE HERE =============//
+// [][][][][][][][][][][][]BPM CODE[][][][][][][][][]
 
 
-  DZ.api('user/me/tracks',function(response){
+
+
+//arrays to hold objects of bpm list - {[title:title1,bpm:bpm1,artist:artist1],[title:title2,bpm:bpm2,artist:artist2]}...etc        
+var arr1 = [];
+var arr2 = [];
+var arr3 = [];
+var arr4 = [];
+
+function getBPM(range){//this function is called in carousel.js onclick of each of the bubbles passing in a range
+
+
+  DZ.api('user/me/recommendations/tracks',function(response){
      var recTrackLength = response.data.length;
-    console.log(response);
-    for(i=0;i<recTrackLength;i++){
-      console.log(response.data[i]);
-    }
-  });
 
+     var trackListIds = new Array(recTrackLength);
+    //console.log(response);//object of all songs
+    for(i=0;i<recTrackLength;i++){
+      //console.log(response.data[i]); // displays all songs in recommendations
+      
+      trackListIds[i] = response.data[i].id;
+    //   console.log(trackListIds[i]);
+    }
+
+    //loop through tracks and store info on each on (name,artist and BPM)
+    for(i=0;i<recTrackLength;i++){
+        
+        //call each track and store info in respective arrays
+        DZ.api('track/'+trackListIds[i],function(response){
+            if(response.bpm <= 100 && response.bpm!=0)
+            {
+
+                //store info in arr1
+                arr1[arr1.length] = {
+                    title: response.title,
+                    bpm: response.bpm,
+                    artist: response.artist.name,
+                    id: response.id
+                }
+                
+            }
+            else if (response.bpm <= 125 && response.bpm >= 100){
+                  //store info in arr1
+                  arr2[arr2.length] = {
+                    title: response.title,
+                    bpm: response.bpm,
+                    artist: response.artist.name,
+                    id: response.id
+                }
+            }
+            else if (response.bpm <= 150 && response.bpm >= 125){
+                  //store info in arr1
+                  arr3[arr3.length] = {
+                    title: response.title,
+                    bpm: response.bpm,
+                    artist: response.artist.name,
+                    id: response.id
+                }
+            }
+            else if (response.bpm <= 175 && response.bpm >= 150){
+                  //store info in arr1
+                  arr4[arr4.length] = {
+                    title: response.title,
+                    bpm: response.bpm,
+                    artist: response.artist.name,
+                    id: response.id
+                }
+            }
+            
+        });
+    }
+    showBPM(range);
+
+  });
 }
+
+function showBPM(range){
+    if(range == 100){
+        for(i=0;i<arr1.length;i++){
+            // displayList1(arr1[i].title,arr1[i].artist,arr1[i].bpm); // this will be the function that actually displays the data
+            console.log(arr1[i].title,arr1[i].artist,arr1[i].bpm);
+        }
+    }
+    if(range == 125){
+        for(i=0;i<arr2.length;i++){
+            // displayList1(arr2[i].title,arr2[i].artist,arr2[i].bpm)
+            console.log(arr2[i].title,arr2[i].artist,arr2[i].bpm);
+        }
+    }
+    if(range == 150){
+        for(i=0;i<arr3.length;i++){
+            // displayList1(arr3[i].title,arr3[i].artist,arr3[i].bpm)
+            console.log(arr3[i].title,arr3[i].artist,arr3[i].bpm);
+        }
+    }
+    if(range == 175){
+        for(i=0;i<arr4.length;i++){
+            // displayList1(arr4[i].title,arr4[i].artist,arr4[i].bpm)
+            console.log(arr4[i].title,arr4[i].artist,arr4[i].bpm);
+        }
+    }
+}
+
+
+//NOT WORKING AT THE MOMENT
+// function displayList1(title,artist,bpm){
+//     document.getElementsByClassName("list1").innerHTML += "<a href='#' class='list-group-item'><span class='glyphicon glyphicon-music'></span> "+title +" - "+artist+" <span class='badge'>"+bpm+"</span></a>";
+// }
+
 
 
 /*[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]*/
