@@ -5,14 +5,18 @@
 
       window.onload = function(){
       getGraph();
-      
       };
 
 
-      
+//arrays to hold objects of bpm list - {[title:title1,bpm:bpm1,artist:artist1],[title:title2,bpm:bpm2,artist:artist2]}...etc        
+var arr1 = [];
+var arr2 = [];
+var arr3 = [];
+var arr4 = [];    
 
 function getGraph(){
-
+    
+    
       DZ.getLoginStatus(function(response){
           var id = response.userID;
           var token = response.authResponse.accessToken;
@@ -31,7 +35,7 @@ function getGraph(){
       console.log(apiresponse)
       console.log(id);
 
-
+    
 
       ////////////////Get User Data//////////////////////
       //here we make a call for the user specific details, store the variables and when this parent function is run on page loading - so is this innerHTML injection(s)
@@ -86,6 +90,78 @@ function getGraph(){
 
   });
 
+    ///GET BPM INFO LOADED
+    
+
+  DZ.api('user/me/recommendations/tracks',function(response){
+    var recTrackLength = response.data.length;
+
+    var trackListIds = new Array(recTrackLength);
+   //console.log(response);//object of all songs
+   for(i=0;i<recTrackLength;i++){
+     //console.log(response.data[i]); // displays all songs in recommendations
+     
+     trackListIds[i] = response.data[i].id;
+   //   console.log(trackListIds[i]);
+   }
+
+   //loop through tracks and store info on each on (name,artist and BPM)
+   for(i=0;i<recTrackLength;i++){
+       
+       //call each track and store info in respective arrays
+       DZ.api('track/'+trackListIds[i],function(response){
+           if(response.bpm <= 100 && response.bpm!=0)
+           {
+
+               //store info in arr1
+               arr1[arr1.length] = {
+                   title: response.title,
+                   bpm: response.bpm,
+                   artist: response.artist.name,
+                   id: response.id
+               }
+               
+           }
+           else if (response.bpm <= 125 && response.bpm >= 100){
+                 //store info in arr1
+                 arr2[arr2.length] = {
+                   title: response.title,
+                   bpm: response.bpm,
+                   artist: response.artist.name,
+                   id: response.id
+               }
+           }
+           else if (response.bpm <= 150 && response.bpm >= 125){
+                 //store info in arr1
+                 arr3[arr3.length] = {
+                   title: response.title,
+                   bpm: response.bpm,
+                   artist: response.artist.name,
+                   id: response.id
+               }
+           }
+           else if (response.bpm <= 175 && response.bpm >= 150){
+                 //store info in arr1
+                 arr4[arr4.length] = {
+                   title: response.title,
+                   bpm: response.bpm,
+                   artist: response.artist.name,
+                   id: response.id
+               }
+           }
+           
+       });
+   }
+
+ });
+
+
+
+
+
+
+
+
 
     /////////Playlist Viewport///////////////
     // Here I just call the api for a user's playlist
@@ -117,6 +193,7 @@ function getGraph(){
   // });
 });
 }
+
         function logout(){
     DZ.logout();
 
@@ -129,105 +206,88 @@ function getGraph(){
 
 
 
-//arrays to hold objects of bpm list - {[title:title1,bpm:bpm1,artist:artist1],[title:title2,bpm:bpm2,artist:artist2]}...etc        
-var arr1 = [];
-var arr2 = [];
-var arr3 = [];
-var arr4 = [];
-
-function getBPM(range){//this function is called in carousel.js onclick of each of the bubbles passing in a range
 
 
+// function getBPM(){//this function is called in carousel.js onclick of each of the bubbles passing in a range
+
+//}
+
+function clearBPM(){
+
+     arr1.length = 0;
+     arr2.length = 0;
+     arr3.length = 0;
+     arr4.length = 0;
+}
+
+function getBPM(){
+        ///GET BPM INFO LOADED
+    
+ 
   DZ.api('user/me/recommendations/tracks',function(response){
-     var recTrackLength = response.data.length;
+    
+    var recTrackLength = response.data.length;
 
-     var trackListIds = new Array(recTrackLength);
-    //console.log(response);//object of all songs
-    for(i=0;i<recTrackLength;i++){
-      //console.log(response.data[i]); // displays all songs in recommendations
-      
-      trackListIds[i] = response.data[i].id;
-    //   console.log(trackListIds[i]);
-    }
+    var trackListIds = new Array(recTrackLength);
+   //console.log(response);//object of all songs
+   for(i=0;i<recTrackLength;i++){
+     //console.log(response.data[i]); // displays all songs in recommendations
+     
+     trackListIds[i] = response.data[i].id;
+   //   console.log(trackListIds[i]);
+   }
 
-    //loop through tracks and store info on each on (name,artist and BPM)
-    for(i=0;i<recTrackLength;i++){
-        
-        //call each track and store info in respective arrays
-        DZ.api('track/'+trackListIds[i],function(response){
-            if(response.bpm <= 100 && response.bpm!=0)
-            {
+   //loop through tracks and store info on each on (name,artist and BPM)
+   for(i=0;i<recTrackLength;i++){
+       
+       //call each track and store info in respective arrays
+       DZ.api('track/'+trackListIds[i],function(response){
+           if(response.bpm <= 100 && response.bpm!=0)
+           {
 
-                //store info in arr1
-                arr1[arr1.length] = {
-                    title: response.title,
-                    bpm: response.bpm,
-                    artist: response.artist.name,
-                    id: response.id
-                }
-                
-            }
-            else if (response.bpm <= 125 && response.bpm >= 100){
-                  //store info in arr1
-                  arr2[arr2.length] = {
-                    title: response.title,
-                    bpm: response.bpm,
-                    artist: response.artist.name,
-                    id: response.id
-                }
-            }
-            else if (response.bpm <= 150 && response.bpm >= 125){
-                  //store info in arr1
-                  arr3[arr3.length] = {
-                    title: response.title,
-                    bpm: response.bpm,
-                    artist: response.artist.name,
-                    id: response.id
-                }
-            }
-            else if (response.bpm <= 175 && response.bpm >= 150){
-                  //store info in arr1
-                  arr4[arr4.length] = {
-                    title: response.title,
-                    bpm: response.bpm,
-                    artist: response.artist.name,
-                    id: response.id
-                }
-            }
-            
-        });
-    }
-    showBPM(range);
+               //store info in arr1
+               arr1[arr1.length] = {
+                   title: response.title,
+                   bpm: response.bpm,
+                   artist: response.artist.name,
+                   id: response.id
+               }
+               
+           }
+           else if (response.bpm <= 125 && response.bpm >= 100){
+                 //store info in arr1
+                 arr2[arr2.length] = {
+                   title: response.title,
+                   bpm: response.bpm,
+                   artist: response.artist.name,
+                   id: response.id
+               }
+           }
+           else if (response.bpm <= 150 && response.bpm >= 125){
+                 //store info in arr1
+                 arr3[arr3.length] = {
+                   title: response.title,
+                   bpm: response.bpm,
+                   artist: response.artist.name,
+                   id: response.id
+               }
+           }
+           else if (response.bpm <= 175 && response.bpm >= 150){
+                 //store info in arr1
+                 arr4[arr4.length] = {
+                   title: response.title,
+                   bpm: response.bpm,
+                   artist: response.artist.name,
+                   id: response.id
+               }
+           }
+           
+       });
+   }
 
-  });
+ });
 }
 
-function showBPM(range){
-    if(range == 100){
-        for(i=0;i<arr1.length;i++){
-            // displayList1(arr1[i].title,arr1[i].artist,arr1[i].bpm); // this will be the function that actually displays the data
-            console.log(arr1[i].title,arr1[i].artist,arr1[i].bpm);
-        }
-    }
-    if(range == 125){
-        for(i=0;i<arr2.length;i++){
-            // displayList1(arr2[i].title,arr2[i].artist,arr2[i].bpm)
-            console.log(arr2[i].title,arr2[i].artist,arr2[i].bpm);
-        }
-    }
-    if(range == 150){
-        for(i=0;i<arr3.length;i++){
-            // displayList1(arr3[i].title,arr3[i].artist,arr3[i].bpm)
-            console.log(arr3[i].title,arr3[i].artist,arr3[i].bpm);
-        }
-    }
-    if(range == 175){
-        for(i=0;i<arr4.length;i++){
-            // displayList1(arr4[i].title,arr4[i].artist,arr4[i].bpm)
-            console.log(arr4[i].title,arr4[i].artist,arr4[i].bpm);
-        }
-    }
-}
 
 
 //NOT WORKING AT THE MOMENT

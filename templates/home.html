@@ -193,31 +193,28 @@
 <!--Section : BPM Chart -->
 <div class="container" id="BP">
 
-    <div class="BPM_container"><h1>BPM </h1>
+    <div class="BPM_container"><h1>BPM </h1><div class="pull-right"> <button class="btn btn_reload" onclick="clearBPM(),getBPM()" style="background-color:transparent;color:white;border-color:white;padding:10px;">Click for some new suggestions</button></div>
     <hr>
     </div>
-<div class="row">
+<div class="row circles_row">
       <div class="col-lg-3">
-      <div class="circle circle1 ">&gt;100 BPM</div>
-      <div class="listbpm list-group list1">Hi</div>
+      <div class="circle circle1 ">&lt;100 BPM</div>
+      <div class="listbpm list1"></div>
       </div>
 
       <div class="col-lg-3">    
-      <div class="circle circle2 ">&gt;125 BPM</div>
-      <div class="listbpm list-group list2">hehe</div>
+      <div class="circle circle2 ">&lt;125 BPM</div>
+      <div class="listbpm list2"></div>
       </div>
 
       <div class="col-lg-3">
-      <div class="circle circle3 ">&gt;150 BPM</div>
-      <div class="listbpm list-group list3">hehe</div>
+      <div class="circle circle3 ">&lt;150 BPM</div>
+      <div class="listbpm list3"></div>
       </div>
 
       <div class="col-lg-3">
-      <div class="circle circle4 ">&gt;175 BPM</div>
-      <div class="listbpm list-group list4">hehe <ul>
-        <li>Hello</li> 
-        <li>Hello</li> 
-      </ul></div>
+      <div class="circle circle4 ">&lt;175 BPM</div>
+      <div class="listbpm list4"></div>
       </div>
   </div>
       <div class="row">
@@ -247,7 +244,7 @@
 <!--[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]-->
 <!-- Section : D3 -->
 <div class="BPM_container container" id="Graph"  ><h1>3D_Graph</h1>
-
+<hr>
       <!--<form>
       <label>
           <input type="radio" name="dataset" id="dataset" value="total" checked> Total</label>

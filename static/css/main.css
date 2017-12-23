@@ -175,13 +175,14 @@ a#return-to-top {
 /*[][][][][][][][][][][][][][][][][][][][][][][][][][][][]*/
 /*BPM */
 /* a pulsing button animation */
-
+.circles_row{
+    padding-top:50px;
+}
 .circle{
     cursor: pointer;
     border-radius: 50%;
     width: 100px;
     height:100px;
-   
     margin:0 auto;
     text-align:center;
     background-image:radial-gradient(circle,black,#5a5a5a);
@@ -353,4 +354,15 @@ hr.style14 {
 
   div#Tunes {
     min-height: 500px;
+}
+
+/*[][][][][][][][][][][][][][][][][][][][][][][][][][][][]*/
+/*[][][][][][][][][][][][][][][][][][][][][][][][][][][][]*/
+/* Style for BPM Tables */
+.bpm_table{
+    text-align: center;
+    color:white;
+    margin-top:20px;
+    border-color:white;
+    border-spacing:collapse;
 }
