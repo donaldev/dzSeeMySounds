@@ -8,6 +8,8 @@
       };
 
 
+//Array to hold album covers with other details
+var chartArr = [];      
 //arrays to hold objects of bpm list - {[title:title1,bpm:bpm1,artist:artist1],[title:title2,bpm:bpm2,artist:artist2]}...etc        
 var arr1 = [];
 var arr2 = [];
@@ -63,10 +65,20 @@ function getGraph(){
       ////////////////Slideshow//////////////////////
     DZ.api('/chart', function(response){
     for (var i = 0; i <6; i++) {
-    console.log(response.tracks.data[i].album.cover_medium);
-    output = response.tracks.data[i].album.cover_medium;
+    console.log(response);
+   
+    var  title = response.tracks.data[i].title;
+    var  id = response.tracks.data[i].id;
+    var  cover = response.tracks.data[i].album.cover_medium;
+    var artist = response.artists.data[i].name;
+
+    chartArr[i] = {
+        title:title,
+        artist: artist
+    }
     
-    document.getElementById("pic"+i).innerHTML="<img src=\"" + output + "\">";
+    document.getElementById("pic"+i).innerHTML = "<img src=\"" + cover + "\">";
+    document.getElementById("caption").innerHTML = chartArr[0].title;
     }
   });
 

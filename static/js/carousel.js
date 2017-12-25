@@ -1,6 +1,7 @@
 
 $(document).ready(function() {
     var carousel = $(".carousel"),
+    arrayNum = 0;
     currdeg  = 0;
 
 $(".btnPrev").on("click", { d: "n" }, rotate);
@@ -9,9 +10,34 @@ $(".btnNext").on("click", { d: "p" }, rotate);
 function rotate(e){
   if(e.data.d=="n"){
     currdeg = currdeg - 60;
+    arrayNum++;
+    if(arrayNum < 0)
+    {
+     
+      arrayNum = 5;
+      
+    }
+    else if (arrayNum > 5){
+  
+      arrayNum = 0;
+    }
+    getNext(arrayNum);
   }
   if(e.data.d=="p"){
     currdeg = currdeg + 60;
+    arrayNum--;
+    if(arrayNum < 0)
+    {
+     
+      arrayNum = 5;
+      
+    }
+    else if (arrayNum > 5){
+  
+      arrayNum = 0;
+    }
+    
+    getNext(arrayNum);
   }
   carousel.css({
     "-webkit-transform": "rotateY("+currdeg+"deg)",
@@ -19,6 +45,22 @@ function rotate(e){
     "-o-transform": "rotateY("+currdeg+"deg)",
     "transform": "rotateY("+currdeg+"deg)"
   });
+}
+
+function getNext(number){
+  
+  if(arrayNum < 0)
+  {
+   
+    arrayNum = 5;
+    
+  }
+  else if (arrayNum > 5){
+
+    arrayNum = 0;
+  }
+  console.log(number);
+  $("#caption").html(chartArr[number].title);
 }
 
 
