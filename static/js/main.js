@@ -15,6 +15,11 @@ var arr1 = [];
 var arr2 = [];
 var arr3 = [];
 var arr4 = [];    
+//Arrays for the D3 chart
+var collection = [];
+var collectionV2 = [];
+var collectionV3 = [];
+
 
 function getGraph(){
     
@@ -34,8 +39,8 @@ function getGraph(){
 
 
       var apiresponse = httpGet(url)
-      console.log(apiresponse)
-      console.log(id);
+    //   console.log(apiresponse)
+    //   console.log(id);
 
     
 
@@ -65,7 +70,7 @@ function getGraph(){
       ////////////////Slideshow//////////////////////
     DZ.api('/chart', function(response){
     for (var i = 0; i <6; i++) {
-    console.log(response);
+    //console.log(response);
    
     var  title = response.tracks.data[i].title;
     var  id = response.tracks.data[i].id;
@@ -82,29 +87,105 @@ function getGraph(){
     }
   });
 
-       /////////Get Albums id to get genres///////////////
-    DZ.api('/user/me/albums', function(response){
-    for (var i = 0; i <response.data.length; i++) {
-    idOutput = response.data[i].id;
-
-
-        //d3 album section
-            DZ.api('album/'+ idOutput, function(response){
-            for (var i = 0; i <1; i++) {
-            if (typeof response.genres.data[i] !== 'undefined') {
-            console.log(response.genres.data[i].name);
-        }
-
-        }
-        });
-
-    }
-
-  });
-
-    ///GET BPM INFO LOADED
+       
+////////////////////////////////////////////D3 - get albums -> genres -> create our d3 shit////////////////////////////////////////////
+  
+  DZ.api('/user/me/albums', function(response)
+  { 
+    var counter = 0;
+    var ultimateLength = response.data.length;
     
+    
+    
+    //error reporting, so if the user has 1 or less favorite genre's we load some for them..
+            if(ultimateLength <= 1)
+            {
+                    alert("We noticed you have one or less favorite genre's on Deezer. This would make our D3-Graph useless so we've given you an example set of favorites!");
+                    collection = 
+                                                [
+                                                    {name: "Mamma Mia! The Movie Soundtrack (All BPs)", id: 103183},
+                                                    {name: "x (Deluxe Edition)", id: 7964062},
+                                                    {name: "Workout Motivation 2017 (Unmixed Workout Music Ide…m, Jogging, Running, Cycling, Cardio and Fitness)", id: 15389991},
+                                                    {name: "÷ (Deluxe)", id: 15478674},
+                                                    {name: "Dua Lipa (Deluxe)", id: 42194801},
+                                                    {name: "Flicker (Deluxe)", id: 49895922},
+                                                    {name: "Picture This (Deluxe)", id: 50593562},
+                                                    {name: "Glory Days: The Platinum Edition", id: 51182522},
+                                                    {name: "reputation", id: 52612062},
+                                                    {name: "Revival", id: 53227232}
+                                                ];
+                ultimateLength = 10;//set the static counter for the rest of the code
+            }
+            else
+            {
+            //right so establish objects in relation to number of albums. & populate
+                    for(var i=0; i<ultimateLength; i++)
+                    {
 
+                        //store the id & name and push it into the array
+                        idOutput = response.data[i].id;
+                        nameOutput = response.data[i].title;  
+
+                        collection[collection.length] = {
+                            name: nameOutput,
+                            id: idOutput
+                        }
+
+                    }
+
+            }
+        
+    
+        console.log(collection); //post the array to the console.
+   
+
+        //this is the loop that makes numerous requests to get the specific genre for each album , and we'll store all relevant data in collectionV2
+        for(b=0 ; b<ultimateLength; b++)
+        {
+           
+        
+            DZ.api('album/'+ collection[b].id, function(response){
+                
+                
+                for(var p=0;p<ultimateLength;p++)
+                {
+                 
+                            min = Math.ceil(7);
+                            max = Math.floor(25);
+                            size = Math.floor(Math.random() * (max - min + 1)) + min;
+                            //use a random number generator to generate the size of the bubbles..
+                            alpha = response.genres.data[p].name;
+                        if( alpha == "undefined")
+                        {
+                            alpha = "no genre-type found \(*).(*)/";
+                        }
+                            collectionV2[collectionV2.length] = {label: alpha , value: size} 
+                            counter++;
+                            {break;} // this is so the array doesn't run for twice the time we want it too..              
+                }
+
+                if(counter == ultimateLength)
+                {
+                    //this bit creates the graph
+                    createD3Graph(collectionV2);
+                }
+                 
+             
+            }); 
+        }//end of the for loop used to access the specific genres
+        
+        
+
+  });//end of the top genres section
+
+
+
+
+
+
+/*////////////////////////////////////////////////////////////////////////*/
+/*////////////////////////////////////////////////////////////////////////*/
+    ///GET BPM INFO LOADED
   DZ.api('user/me/recommendations/tracks',function(response){
     var recTrackLength = response.data.length;
 
@@ -312,21 +393,11 @@ function getBPM(){
 /*[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]*/
 /*[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]*/
 /*[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]*/
+/* d3 Graph creation */
 
-  datasetTotal = [
-    { label: 'Rock', value: 19 },
-    { label: 'Pop', value: 5 },
-    { label: 'EDM', value: 13 },
-    { label: 'Donkage', value: 17 },
-    { label: 'Country', value: 19 },
-    { label: 'eee', value: 22 },
-    { label: 'p', value: 25 },
-    { label: ';', value: 24 },
-    { label: 'l', value: 21 },
-    { label: 'k', value: 29 },
-    { label: 'j', value: 26 },
-    { label: 'jjj', value: 27 }
-];
+function createD3Graph(graph){
+    console.log(graph);
+    datasetTotal = graph;
 
 // datasetOption1 = [
 //     { label: "Category 11", value: 22 },
@@ -337,14 +408,14 @@ function getBPM(){
 //     { label: "Category 16", value: 0 }
 // ];
 
-// datasetOption2 = [
-//     { label: "Category 21", value: 10 },
-//     { label: "Category 22", value: 20 },
-//     { label: "Category 23", value: 30 },
-//     { label: "Category 24", value: 5 },
-//     { label: "Category 25", value: 12 },
-//     { label: "Category 18", value: 23 }
-// ];
+datasetOption2 = [
+    { label: "Category 21", value: 10 },
+    { label: "Category 22", value: 20 },
+    { label: "Category 23", value: 30 },
+    { label: "Category 24", value: 5 },
+    { label: "Category 25", value: 12 },
+    { label: "Category 18", value: 23 }
+];
 
 
 d3.selectAll("input").on("change", selectDataset);
@@ -505,7 +576,7 @@ function drawBubbles(data) {
 }
 
 drawBubbles(datasetTotal);
-
+}
 /*[][][][][][][][][][][][][][][][][][][][][]*/
 /*[][][][][][][][][][][][][][][][][][][][][]*/
 /*Konami Code*/
