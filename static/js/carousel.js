@@ -102,17 +102,18 @@ $(".circle1").on('click',function(){
        length1=5;
      }
      
-     html+="<thead>";
-     html+="<tr>";
-         html+="<th>#</th>";
-         html+="<th>Title</th>";
-         html+="<th>BPM</th>";
-     html+="</tr>";
-     html+="</thead>";
+
      if(length1==0){
-      html+="<tr>No Data Found - Let's try again! <button class='btn btn_reload' value ='Reload' onclick='getGraph()'></button></tr>";
+      html+="<tr>No Data Found - Let's try again! <button class='btn btn_reload' value ='Reload' onclick='getBPM()'></button></tr>";
     }
     else{
+      html+="<thead>";
+      html+="<tr>";
+          html+="<th>#</th>";
+          html+="<th>Title</th>";
+          html+="<th>BPM</th>";
+      html+="</tr>";
+      html+="</thead>";  
     for (var i = 0; i < length1; i++) {
       html+="<tr>";
       html+="<td>"+(i+1)+"</td>"
@@ -150,6 +151,12 @@ $(".circle2").on('click',function(){
     {
       length2=5;
     }
+
+
+    if(length2==0){
+      html+="<tr>No Data Found - Let's try again! <button class='btn btn_reload' value ='Reload' onclick='getBPM()'></button></tr>";
+    }
+   else{
     html+="<thead>";
     html+="<tr>";
         html+="<th>#</th>";
@@ -157,10 +164,6 @@ $(".circle2").on('click',function(){
         html+="<th>BPM</th>";
     html+="</tr>";
     html+="</thead>";
-
-    if(length2==0){
-      html+="<tr>No Data Found - Let's try again! <button class='btn btn_reload' value ='Reload' onclick='getGraph()'></button></tr>";
-    }
    for (var i = 0; i < length2; i++) {
      html+="<tr>";
      html+="<td>"+(i+1)+"</td>"
@@ -171,6 +174,7 @@ $(".circle2").on('click',function(){
 
    }
    html+="</table>";
+  }
    $(".list2").html(html);
     $(".list2").css('visibility','visible') 
   }
@@ -196,16 +200,18 @@ $(".circle3").on('click',function(){
     {
       length3=5;
     }
-    html+="<thead>";
-    html+="<tr>";
-        html+="<th>#</th>";
-        html+="<th>Title</th>";
-        html+="<th>BPM</th>";
-    html+="</tr>";
-    html+="</thead>";
+
     if(length3==0){
-      html+="<tr>No Data Found - Let's try again! <button class='btn btn_reload' value ='Reload' onclick='getGraph()'></button></tr>";
+      html+="<tr>No Data Found - Let's try again! <button class='btn btn_reload' value ='Reload' onclick='getBPM()'></button></tr>";
     }
+    else{
+      html+="<thead>";
+      html+="<tr>";
+          html+="<th>#</th>";
+          html+="<th>Title</th>";
+          html+="<th>BPM</th>";
+      html+="</tr>";
+      html+="</thead>";
    for (var i = 0; i < length3; i++) {
      html+="<tr>";
      html+="<td>"+(i+1)+"</td>"
@@ -216,6 +222,7 @@ $(".circle3").on('click',function(){
 
    }
    html+="</table>";
+  }
      $(".list3").html(html);
     $(".list3").css('visibility','visible') 
   }
@@ -239,6 +246,12 @@ $(".circle4").on('click',function(){
     {
       length4=5;
     }
+
+    if(length4==0){
+      html+="<tr>No Data Found - Let's try again! <button class='btn btn_reload' value ='Reload' onclick='getBPM()'></button></tr>";
+    }
+
+  else{
     html+="<thead>";
     html+="<tr>";
         html+="<th>#</th>";
@@ -246,9 +259,6 @@ $(".circle4").on('click',function(){
         html+="<th>BPM</th>";
     html+="</tr>";
     html+="</thead>";
-    if(length4==0){
-      html+="<tr>No Data Found - Let's try again! <button class='btn btn_reload' value ='Reload' onclick='getGraph()'></button></tr>";
-    }
    for (var i = 0; i < length4; i++) {
      html+="<tr>";
      html+="<td>"+(i+1)+"</td>"
@@ -259,6 +269,7 @@ $(".circle4").on('click',function(){
 
    }
    html+="</table>";
+  }
      $(".list4").html(html);
     $(".list4").css('visibility','visible') 
   }
