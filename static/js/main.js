@@ -19,6 +19,8 @@ var arr4 = [];
 var collection = [];
 var collectionV2 = [];
 var collectionV3 = [];
+var collectionV4 =[];
+var detailcollection =[];
 
 
 function getGraph(){
@@ -88,7 +90,7 @@ function getGraph(){
   });
 
        
-////////////////////////////////////////////D3 - get albums -> genres -> create our d3 shit////////////////////////////////////////////
+////////////////////////////////////////////D3 - get albums -> genres -> create our d3 stuff////////////////////////////////////////////
   
   DZ.api('/user/me/albums', function(response)
   { 
@@ -136,8 +138,8 @@ function getGraph(){
             }
         
     
-        console.log(collection); //post the array to the console.
-   
+        collectionV4 = collection; //we'll use collectionV4 to display the users favorited albums
+        
 
         //this is the loop that makes numerous requests to get the specific genre for each album , and we'll store all relevant data in collectionV2
         for(b=0 ; b<ultimateLength; b++)
@@ -168,6 +170,7 @@ function getGraph(){
                 {
                     //this bit creates the graph
                     createD3Graph(collectionV2);
+                    displayUsersTopGenres(collectionV4 , collectionV2);
                 }
                  
              
@@ -180,7 +183,36 @@ function getGraph(){
 
 
 
+    //function for displaying the users
+    function displayUsersTopGenres(array , array2)
+    {
+        var countTest =0;
+        listOfAlbums = array;
+        TopGenres = array2;
+        length = listOfAlbums.length;
 
+        console.log(listOfAlbums);
+        console.log(TopGenres);
+        console.log(length);
+
+        //loop that creates the table
+        for(p=0; p<length; p++)
+        {
+            //if statement creates the headers of our table
+            if(p == 0)
+            {
+                document.getElementById("headOfGenreTable").innerHTML +="<tr>"+"<th>"+"<strong>"+"#"+"</strong>"+"</th>"+"<th>"+"<strong>"+"Album Name"+"</strong>"+"</th>"+"<th>"+"<strong>"+"Genre Type"+"</strong>"+"</th>"+"</tr>";
+                
+            }
+
+            document.getElementById("bodyOfGenreTable").innerHTML +="<tr>"+"<td>"+p+"</td>"+"<td>"+listOfAlbums[p].name+"</td>"+"<td>"+TopGenres[p].label+"</td>"+"</tr>";
+
+    
+        }
+ 
+    }
+
+////////////////////////////////////////////End of the D3 stuff////////////////////////////////////////////
 
 
 /*////////////////////////////////////////////////////////////////////////*/
@@ -396,7 +428,7 @@ function getBPM(){
 /* d3 Graph creation */
 
 function createD3Graph(graph){
-    console.log(graph);
+    //console.log(graph);
     datasetTotal = graph;
 
 // datasetOption1 = [
@@ -408,14 +440,14 @@ function createD3Graph(graph){
 //     { label: "Category 16", value: 0 }
 // ];
 
-datasetOption2 = [
-    { label: "Category 21", value: 10 },
-    { label: "Category 22", value: 20 },
-    { label: "Category 23", value: 30 },
-    { label: "Category 24", value: 5 },
-    { label: "Category 25", value: 12 },
-    { label: "Category 18", value: 23 }
-];
+// datasetOption2 = [
+//     { label: "Category 21", value: 10 },
+//     { label: "Category 22", value: 20 },
+//     { label: "Category 23", value: 30 },
+//     { label: "Category 24", value: 5 },
+//     { label: "Category 25", value: 12 },
+//     { label: "Category 18", value: 23 }
+// ];
 
 
 d3.selectAll("input").on("change", selectDataset);
@@ -460,7 +492,7 @@ function processData(data) {
     }
 
     return { children: newDataSet.reverse() };
-    console.log(newDataSet);
+   // console.log(newDataSet);
 }
 
 function drawBubbles(data) {

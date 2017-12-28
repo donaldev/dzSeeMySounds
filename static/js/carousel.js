@@ -1,5 +1,25 @@
 
 $(document).ready(function() {
+
+  //=================================== Waypoints & Animate.css
+
+   // hide our element on page load
+  //  $('.block1').css('opacity', 0);
+   
+  //   $('.block1').waypoint(function() {
+  //       $('.block1').addClass('fadeInLeft');
+  //   }, { offset: '9%' });
+
+  //   $('.block2').css('opacity', 0);
+    
+  //    $('.block2').waypoint(function() {
+  //        $('.block2').addClass('fadeInRight');
+  //    }, { offset: '20%' });
+   
+
+  //=================================== Waypoints & Animate.css
+
+
     var carousel = $(".carousel"),
     arrayNum = 0;
     currdeg  = 0;
@@ -249,7 +269,6 @@ $(".circle4").on('click',function(){
 })
 
 
-
 //================================= User details
 
 
@@ -261,8 +280,21 @@ $(".circle4").on('click',function(){
   
 // }
 
+//=================================== Change D3 CSS
 
+// $(function() {
+//   $('.bubble').hover(function() {
+//     $('.bubble').css('opacity', '0.3');
+//   }, function() {
+//     // on mouseout, reset the background colour
+//     $('.bubble').css('opacity', '0.7');
+//   });
+// });
+
+// });
+
+
+
+ 
 
 });
-
-

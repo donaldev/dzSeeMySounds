@@ -36,7 +36,8 @@
 <link rel="stylesheet" type="text/css" href="./static/css/main.css">
 <link rel="stylesheet" type="text/css" href="./static/css/carousel.css">
 
-
+<!-- animate.css-->
+			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.css" />
     
 
       <!-- Link for back to top button -->
@@ -47,6 +48,7 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.4.11/d3.min.js"></script>
       <!-- d3 scripts -->
       <link rel="stylesheet" type="text/css" href="./static/css/d3.css">
+      
 
 <script src="http://cdn-files.deezer.com/js/min/dz.js"></script>
 <div id="dz-root"></div>
@@ -76,7 +78,7 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#myCarousel">Home</a></li>
+            <li class="active"><a href="#containerTrack">Home</a></li>
             <li><a href="#BPM">BPM</a></li>
             <li><a href="#Graph">Chart</a></li>
             <li><a href="#Tunes">PlayATune</a></li>
@@ -118,11 +120,11 @@
 
               <h4>BPM Chart Recommendations</h4>
               <p>The BPM(Beat Per Minute) Recommendation section recommends songs based on whatever mood you choose. Just click on the preferred BPM Button to receive a list of
-                recommendations. To refresh the lists click the button "Click for some new suggestions".
+                recommendations. To refresh the lists click the button "Click for some new suggestions". Try hovering over the elements in the table to magnify their text!
               </p>
 
               <h4>D3 Top Genre Chart</h4>
-              <p>Our D3 Chart section displays the current users Top Genre's in a bubble-chart.(Note: Duplicates of genres are removed.)</p>
+              <p>Our D3 Chart section displays the current users Top Genre's in a bubble-chart & table. Try hovering over the elements in the table to magnify their text!(Note: Duplicates of genres are removed.)</p>
 
               <h4>Playlist Viewer</h4>
               <p>A Deezer Playlist viewport, so you can listen to your favourite tunes while you use your new favourite app!</p>
@@ -164,7 +166,7 @@
 <!--[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]-->
 
 
-<div class="containerTracks">
+<div class="containerTracks" id="containerTrack">
   <div class="row">
     <div class="col-lg-4"></div>
     <div class="col-lg-4 tracksTitle"> Trending on Deezer </div>
@@ -214,7 +216,7 @@
     <div class="BPM_container"><h1>BPM </h1><div class="pull-right"> <button class="btn btn_reload" onclick="clearBPM(),getBPM()" style="background-color:transparent;color:white;border-color:white;padding:10px;">Click for some new suggestions</button></div>
     <hr>
     </div>
-<div class="row circles_row">
+<div class="row circles_row ">
       <div class="col-lg-3">
       <div class="circle circle1 ">&lt;100 BPM</div>
       <div class="listbpm list1"></div>
@@ -271,7 +273,27 @@
       <label>
           <input type="radio" name="dataset" id="dataset" value="option2"> Option 2</label>
     </form>-->
-    <div class="outterBubbles"> <div id="bubbleChart"></div></div>
+    <div class="row blockif animated block1">
+      <div class="outterBubbles"> 
+        <div id="bubbleChart">
+          <div class="col-lg-3"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div>
+        <table class="genreTable" id="userGenreTable">
+               <!-- <tr>
+                <th>Album - Name</th>
+                <th>Genre - Type</th>
+              </tr> -->
+              <thead id="headOfGenreTable">  </thead>
+              <tbody id="bodyOfGenreTable">  </tbody>
+        </table>
+      </div>
+    </div>
+    
    
       
   </div>
@@ -280,9 +302,9 @@
 <!--[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]-->
 <!--[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]-->
 <!-- Section : Playlist Generation / play-viewport -->
-<div class="container"  id="Tunes"><h1>Your Playlist</h1>
+<div class="container "  id="Tunes"><h1>Your Playlist</h1>
   <hr>
-<div class="row">
+<div class="row animated block2">
 <div class="col-lg-4">
 </div>
 <div class="col-lg-4">
@@ -311,6 +333,8 @@
     <script src="https://d3js.org/d3.v3.min.js"></script>
     <!--font awesome link-->
     <script src="https://use.fontawesome.com/cc3fb6949b.js"></script>
+    
+    <!--internal js-->
     <script src="./static/js/carousel.js"></script>
     <script src="./static/js/main.js"></script>
     <script src="./static/js/alt.js"></script>
