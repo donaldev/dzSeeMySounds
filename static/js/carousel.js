@@ -104,7 +104,7 @@ $(".circle1").on('click',function(){
      
 
      if(length1==0){
-      html+="<tr>No Data Found - Let's try again! <button class='btn btn_reload' value ='Reload' onclick='getBPM()'></button></tr>";
+      html+="<tr>No Data Found - Let's try again! </tr>";
     }
     else{
       html+="<thead>";
@@ -154,7 +154,7 @@ $(".circle2").on('click',function(){
 
 
     if(length2==0){
-      html+="<tr>No Data Found - Let's try again! <button class='btn btn_reload' value ='Reload' onclick='getBPM()'></button></tr>";
+      html+="<tr>No Data Found - Let's try again! </tr>";
     }
    else{
     html+="<thead>";
@@ -202,7 +202,7 @@ $(".circle3").on('click',function(){
     }
 
     if(length3==0){
-      html+="<tr>No Data Found - Let's try again! <button class='btn btn_reload' value ='Reload' onclick='getBPM()'></button></tr>";
+      html+="<tr>No Data Found - Let's try again! </tr>";
     }
     else{
       html+="<thead>";
@@ -248,7 +248,7 @@ $(".circle4").on('click',function(){
     }
 
     if(length4==0){
-      html+="<tr>No Data Found - Let's try again! <button class='btn btn_reload' value ='Reload' onclick='getBPM()'></button></tr>";
+      html+="<tr>No Data Found - Let's try again! </tr>";
     }
 
   else{
